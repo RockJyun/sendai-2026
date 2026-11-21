@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>❄️ 日本東北追雪・親子美食 6 日遊 🍎</title>
+  <!-- 載入 Google Fonts: Huninn 粉圓體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet" />
+  <!-- 載入 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Huninn"', 'sans-serif'],
+          },
+          colors: {
+            washi: '#FFFCF6',
+            ink: '#3E3A39',
+            coral: '#F2A497',
+            yamabuki: '#F6D27A',
+            mizu: '#A8D3E6',
+            wakatake: '#B9DAA5',
+            cream: '#F5EFE2',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* 全域日系繪本風基礎設定：無漸層、平塗色塊、3px 墨灰粗線框、和紙質感 */
+    body {
+      background-color: #FFFCF6;
+      color: #3E3A39;
+      font-family: 'Huninn', sans-serif;
+      overflow-x: hidden;
+      /* 極細微的繪本紙張點點底紋（純平塗色點，無漸層） */
+      background-image: radial-gradient(#E8E0D2 1.25px, transparent 1.25px);
+      background-size: 22px 22px;
+    }
+
+    /* 繪本粗線框與硬邊陰影 */
+    .ehon-card {
+      background-color: #FFFCF6;
+      border: 3px solid #3E3A39;
+      border-radius: 26px;
+      box-shadow: 0 5px 0 #3E3A39;
+    }
+
+    .ehon-card-sm {
+      background-color: #FFFCF6;
+      border: 3px solid #3E3A39;
+      border-radius: 20px;
+      box-shadow: 0 3px 0 #3E3A39;
+    }
+
+    .ehon-pill {
+      border: 2.5px solid #3E3A39;
+      border-radius: 9999px;
+      box-shadow: 0 2px 0 #3E3A39;
+    }
+
+    .ehon-btn {
+      border: 3px solid #3E3A39;
+      border-radius: 9999px;
+      box-shadow: 0 4px 0 #3E3A39;
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+    }
+
+    .ehon-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #3E3A39;
+    }
+
+    /* 隱藏橫向捲軸但保留滑動功能 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* 插圖輕輕律動動畫 */
+    @keyframes gentleFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-5px) rotate(1.2deg);
+      }
+    }
+
+    @keyframes gentleSway {
+      0%, 100% {
+        transform: rotate(-2deg);
+      }
+      50% {
+        transform: rotate(2.5deg);
+      }
+    }
+
+    @keyframes trainGlide {
+      0%, 100% {
+        transform: translateX(0px);
+      }
+      50% {
+        transform: translateX(5px);
+      }
+    }
+
+    @keyframes snowDrift {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(4px) scale(1.08);
+      }
+    }
+
+    .anim-float {
+      animation: gentleFloat 3.6s ease-in-out infinite;
+    }
+
+    .anim-sway {
+      transform-origin: center bottom;
+      animation: gentleSway 3.2s ease-in-out infinite;
+    }
+
+    .anim-train {
+      animation: trainGlide 2.8s ease-in-out infinite;
+    }
+
+    .anim-snow {
+      animation: snowDrift 2.6s ease-in-out infinite;
+    }
+
+    /* 切換日期時的彈跳進場效果 */
+    @keyframes panelBounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(12px);
+      }
+      65% {
+        opacity: 1;
+        transform: scale(1.015) translateY(-3px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .animate-bounce-panel {
+      animation: panelBounceIn 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* 支援系統「減少動態效果」與手動切換開關 */
+    @media (prefers-reduced-motion: reduce) {
+      .anim-float,
+      .anim-sway,
+      .anim-train,
+      .anim-snow,
+      .animate-bounce-panel {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    body.reduce-motion .anim-float,
+    body.reduce-motion .anim-sway,
+    body.reduce-motion .anim-train,
+    body.reduce-motion .anim-snow,
+    body.reduce-motion .animate-bounce-panel {
+      animation: none !important;
+      transition: none !important;
+    }
+  </style>
+</head>
+<body class="pb-20 selection:bg-yamabuki selection:text-ink">
+
+  <!-- 頂端固定選單 -->
+  <header class="sticky top-0 z-50 bg-washi/95 border-b-[3px] border-ink px-3 py-2.5">
+    <div class="max-w-2xl mx-auto flex items-center justify-between gap-2">
+      <!-- 導覽膠囊連結 -->
+      <nav class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" aria-label="主要導覽">
+        <a href="#sec-home" class="ehon-pill bg-yamabuki px-3 py-1.5 text-sm whitespace-nowrap active:translate-y-0.5">🏠 首頁</a>
+        <a href="#sec-flight" class="ehon-pill bg-mizu px-3 py-1.5 text-sm whitespace-nowrap active:translate-y-0.5">👑 商務艙</a>
+        <a href="#sec-itinerary" class="ehon-pill bg-coral px-3 py-1.5 text-sm whitespace-nowrap active:translate-y-0.5">📅 行程</a>
+        <a href="#sec-tips" class="ehon-pill bg-yamabuki px-3 py-1.5 text-sm whitespace-nowrap active:translate-y-0.5">💡 提醒</a>
+        <a href="#sec-hotel" class="ehon-pill bg-wakatake px-3 py-1.5 text-sm whitespace-nowrap active:translate-y-0.5">🏨 住宿</a>
+        <a href="#sec-checklist" class="ehon-pill bg-cream px-3 py-1.5 text-sm whitespace-nowrap active:translate-y-0.5">🎒 清單</a>
+      </nav>
+
+      <!-- 減少動態效果切換按鈕 -->
+      <button id="motion-toggle" type="button" onclick="toggleMotion()" title="切換動畫效果"
+        class="ehon-pill bg-washi px-2.5 py-1.5 text-xs whitespace-nowrap flex items-center gap-1 shrink-0 active:translate-y-0.5">
+        <span id="motion-icon">✨</span>
+        <span id="motion-label" class="hidden sm:inline">動態開</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-4 pt-5 space-y-8">
+
+    <!-- 1. 首頁插圖 ＋ 標題 ＋ 出發倒數 -->
+    <section id="sec-home" class="ehon-card p-5 sm:p-6 bg-washi relative overflow-hidden">
+      <!-- 頂部標籤列 -->
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <span class="ehon-pill bg-mizu px-3 py-1 text-xs sm:text-sm">2026/12/08（二）～ 12/13（日）</span>
+        <span class="ehon-pill bg-yamabuki px-3 py-1 text-xs sm:text-sm">👨‍👩‍👧‍👦 4 大 1 小（1y8m）</span>
+      </div>
+
+      <!-- 主標題 -->
+      <div class="text-center my-2">
+        <p class="text-sm text-ink/80 mb-1">東北雪國親子小旅行繪本</p>
+        <h1 class="text-2xl sm:text-3xl leading-snug tracking-wide">
+          ❄️ 日本東北追雪・親子美食 6 日遊 🍎
+        </h1>
+      </div>
+
+      <!-- 自繪東北特色繪本插圖 SVG（雪山、奧入瀨溪流、はやぶさ新幹線、青森大蘋果、松島小島與紅橋） -->
+      <div class="my-4 bg-mizu/35 border-[3px] border-ink rounded-3xl p-3">
+        <svg viewBox="0 0 400 210" class="w-full h-auto block" role="img" aria-label="日本東北雪山、新幹線、青森蘋果與松島繪本插圖">
+          <!-- 背景白雲 -->
+          <g class="anim-float">
+            <path d="M45 48 C45 38 60 36 65 44 C72 34 92 38 92 50 C100 52 98 64 88 64 L48 64 C38 64 38 50 45 48 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M295 36 C295 27 308 25 313 32 C319 24 337 27 337 38 C344 40 342 50 333 50 L298 50 C289 50 289 38 295 36 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+
+          <!-- 飄落的雪花結晶與圓點 -->
+          <g class="anim-snow" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2">
+            <circle cx="135" cy="34" r="4"/>
+            <circle cx="245" cy="28" r="4.5"/>
+            <circle cx="368" cy="68" r="4"/>
+            <circle cx="25" cy="84" r="3.5"/>
+            <!-- 十字雪花 -->
+            <path d="M188 22 V34 M182 28 H194" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M268 56 V66 M263 61 H273" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+
+          <!-- 遠處八甲田雪山群 -->
+          <polygon points="15,148 95,58 175,148" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <polygon points="95,58 72,84 86,88 95,80 105,89 118,84" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+          <polygon points="130,148 225,46 320,148" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <polygon points="225,46 196,77 212,83 225,73 238,83 254,77" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+
+          <!-- 松島松樹小島（右側） -->
+          <path d="M292 148 Q335 118 382 148 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <!-- 小松樹 -->
+          <g class="anim-sway">
+            <rect x="333" y="114" width="6" height="16" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+            <polygon points="336,84 320,104 352,104" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+            <polygon points="336,96 316,117 356,117" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+          </g>
+
+          <!-- 可愛針葉雪樹（左側） -->
+          <g class="anim-sway">
+            <rect x="40" y="122" width="6" height="24" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+            <polygon points="43,78 24,106 62,106" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+            <polygon points="43,96 20,126 66,126" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+          </g>
+
+          <!-- 軌道高架橋 -->
+          <rect x="8" y="142" width="384" height="10" rx="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+
+          <!-- 東北新幹線 はやぶさ (Hayabusa E5 造型) -->
+          <g class="anim-train">
+            <!-- 車身主體（若竹綠上蓋＋和紙白下身＋珊瑚粉腰線） -->
+            <path d="M98 141 L98 118 C98 113 102 110 108 110 L218 110 C235 110 258 124 268 134 C272 138 269 141 262 141 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M98 129 L259 129 C264 132 268 135 268 138 C268 140 265 141 260 141 L98 141 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <!-- 珊瑚粉經典腰帶 -->
+            <line x1="100" y1="129" x2="257" y2="129" stroke="#F2A497" stroke-width="4.5"/>
+            <line x1="98" y1="126.5" x2="254" y2="126.5" stroke="#3E3A39" stroke-width="2"/>
+            <!-- 車窗 -->
+            <rect x="112" y="115" width="14" height="8" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+            <rect x="134" y="115" width="14" height="8" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+            <rect x="156" y="115" width="14" height="8" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+            <rect x="178" y="115" width="14" height="8" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+            <!-- 駕駛艙窗 -->
+            <path d="M214 114 L228 114 L238 122 L214 122 Z" fill="#3E3A39"/>
+          </g>
+
+          <!-- 奧入瀨溪流與水波（底部） -->
+          <rect x="8" y="152" width="384" height="48" rx="16" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+          <path d="M35 172 Q52 166 68 172 T102 172" fill="none" stroke="#FFFCF6" stroke-width="3" stroke-linecap="round"/>
+          <path d="M165 184 Q182 178 198 184 T232 184" fill="none" stroke="#FFFCF6" stroke-width="3" stroke-linecap="round"/>
+          <path d="M295 170 Q312 164 328 170 T362 170" fill="none" stroke="#FFFCF6" stroke-width="3" stroke-linecap="round"/>
+
+          <!-- 青森可愛大蘋果吉祥物（左下前景） -->
+          <g class="anim-float">
+            <path d="M84 156 C70 154 62 166 64 180 C66 193 77 198 85 195 C93 198 104 193 106 180 C108 166 100 154 84 156 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            <!-- 蘋果蒂與葉子 -->
+            <path d="M85 157 Q85 147 90 144" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+            <path d="M86 151 Q98 144 102 152 Q94 157 86 151 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- 蘋果微笑表情 -->
+            <circle cx="78" cy="175" r="2.2" fill="#3E3A39"/>
+            <circle cx="92" cy="175" r="2.2" fill="#3E3A39"/>
+            <path d="M82 181 Q85 185 88 181" fill="none" stroke="#3E3A39" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+
+          <!-- 小雪人吉祥物（右下前景） -->
+          <g class="anim-sway">
+            <circle cx="268" cy="183" r="14" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+            <circle cx="268" cy="163" r="10.5" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+            <!-- 圍巾 -->
+            <rect x="259" y="171" width="18" height="5" rx="2.5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
+            <!-- 眼睛與紅鼻子 -->
+            <circle cx="264.5" cy="161.5" r="1.8" fill="#3E3A39"/>
+            <circle cx="271.5" cy="161.5" r="1.8" fill="#3E3A39"/>
+            <circle cx="268" cy="164.5" r="2" fill="#F2A497"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- 出發倒數計時器（基準時間：2026-12-08 11:50 桃園起飛） -->
+      <div class="bg-yamabuki border-[3px] border-ink rounded-2xl p-3.5 text-center">
+        <p id="countdown-title" class="text-sm sm:text-base mb-2">⏳ 距離星宇 JX862（商務艙）桃園起飛還有</p>
+        <div id="countdown-boxes" class="grid grid-cols-4 gap-2 max-w-md mx-auto">
+          <div class="bg-washi border-[2.5px] border-ink rounded-xl py-1.5">
+            <div id="cd-days" class="text-xl sm:text-2xl leading-none">--</div>
+            <div class="text-xs mt-1">天</div>
+          </div>
+          <div class="bg-washi border-[2.5px] border-ink rounded-xl py-1.5">
+            <div id="cd-hours" class="text-xl sm:text-2xl leading-none">--</div>
+            <div class="text-xs mt-1">時</div>
+          </div>
+          <div class="bg-washi border-[2.5px] border-ink rounded-xl py-1.5">
+            <div id="cd-mins" class="text-xl sm:text-2xl leading-none">--</div>
+            <div class="text-xs mt-1">分</div>
+          </div>
+          <div class="bg-washi border-[2.5px] border-ink rounded-xl py-1.5">
+            <div id="cd-secs" class="text-xl sm:text-2xl leading-none">--</div>
+            <div class="text-xs mt-1">秒</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 親子行李與推車配置速覽 -->
+      <div class="mt-4 bg-cream border-[2.5px] border-ink rounded-2xl p-3 flex items-center gap-3">
+        <span class="text-2xl shrink-0">🧳</span>
+        <p class="text-xs sm:text-sm leading-relaxed">
+          <strong>行李配置：</strong>4 個 28 吋內行李箱 ＋ 1 台推車（商務艙享優先託運掛牌！Day 2–3 上奧入瀨前，先將 2–3 箱寄放仙台站共構飯店，輕裝上山！）
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. 航班資訊卡片（星宇商務艙 Business Class） -->
+    <section id="sec-flight" class="space-y-3">
+      <div class="flex flex-wrap items-center justify-between gap-2 px-1">
+        <span class="ehon-pill bg-yamabuki px-3 py-1 text-base">👑 星宇航空商務艙・A330-900neo</span>
+        <span class="text-xs text-ink/80">全平躺商務艙｜日本快台灣 1 小時</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- 去程卡片 -->
+        <article class="ehon-card p-4 bg-washi flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-1 mb-3">
+              <div class="flex items-center gap-1.5">
+                <span class="ehon-pill bg-wakatake px-2.5 py-0.5 text-xs">去程</span>
+                <span class="ehon-pill bg-yamabuki px-2.5 py-0.5 text-xs">👑 商務艙</span>
+              </div>
+              <span class="text-sm">2026/12/08（二）</span>
+            </div>
+            <div class="flex items-center justify-between bg-cream border-[2.5px] border-ink rounded-2xl p-3">
+              <div class="text-center">
+                <div class="text-xs text-ink/75">桃園 TPE</div>
+                <div class="text-2xl mt-0.5">11:50</div>
+                <div class="mt-1 inline-block bg-washi border-[1.5px] border-ink rounded-full px-2 py-0.5 text-[11px]">第一航廈 T1</div>
+              </div>
+              <div class="flex flex-col items-center px-1">
+                <span class="text-xs bg-yamabuki border-2 border-ink rounded-full px-2.5 py-0.5 mb-0.5">JX862</span>
+                <span class="text-[10px] text-ink/80 mb-0.5">A330-900neo</span>
+                <!-- 繪本小飛機 SVG -->
+                <svg width="56" height="22" viewBox="0 0 56 22" class="anim-train" aria-hidden="true">
+                  <line x1="2" y1="11" x2="54" y2="11" stroke="#3E3A39" stroke-width="2.5" stroke-dasharray="4 3"/>
+                  <path d="M22 11 L34 11 L28 4 L25 4 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M18 11 L38 11 L35 15 L20 15 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-[11px] text-ink/75 mt-0.5">飛行 3h 10m</span>
+              </div>
+              <div class="text-center">
+                <div class="text-xs text-ink/75">仙台 SDJ</div>
+                <div class="text-2xl mt-0.5">16:00</div>
+                <div class="mt-1 inline-block bg-washi border-[1.5px] border-ink rounded-full px-2 py-0.5 text-[11px]">國際線航廈</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 點擊展開去程細節按鈕 -->
+          <div class="mt-3">
+            <button type="button" id="btn-flight-out" onclick="toggleFlightDetail('flight-out-detail', 'btn-flight-out', '去程商務艙禮遇＆貴賓室細節')"
+              aria-expanded="false"
+              class="ehon-btn w-full bg-mizu/35 hover:bg-mizu/55 py-2 px-3 text-xs flex items-center justify-between">
+              <span>🔍 點開查看：去程商務艙禮遇＆貴賓室細節</span>
+              <span class="text-[11px] bg-washi border-[1.5px] border-ink rounded-full px-2 py-0.5">展開 ▼</span>
+            </button>
+            <ul id="flight-out-detail" class="hidden mt-2.5 space-y-1.5 text-xs text-ink/90 bg-mizu/20 border-2 border-ink rounded-xl p-2.5 animate-bounce-panel">
+              <li>🥂 <strong>專屬報到與貴賓室：</strong>09:20 抵達桃園 T1「星宇商務艙專屬櫃檯」快速報到，通關後可帶全家人與寶寶前往 <strong>星宇 Galactic 貴賓室</strong> 享用現做熱食、阜杭豆漿與休息哺乳！</li>
+              <li>🛋️ <strong>A330-900neo 商務艙選位：</strong>採用 <strong>1-2-1 魚骨式全平躺座位</strong>（共 28 席），4 大 1 小建議選<strong>中間相鄰 2 席（D/G 排）＋旁邊靠窗 1 席</strong>，中間隔板降下方便照顧 1y8m 寶寶！</li>
+              <li>🍽️ <strong>機上美饌預選：</strong>起飛前 21 天～24 小時記得上星宇官網「預選商務艙主餐」與確認寶寶餐（BBML/CHML）；16:00 抵達仙台享優先下機與優先行李提領！</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 回程卡片 -->
+        <article class="ehon-card p-4 bg-washi flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-1 mb-3">
+              <div class="flex items-center gap-1.5">
+                <span class="ehon-pill bg-coral px-2.5 py-0.5 text-xs">回程</span>
+                <span class="ehon-pill bg-yamabuki px-2.5 py-0.5 text-xs">👑 商務艙</span>
+              </div>
+              <span class="text-sm">2026/12/13（日）</span>
+            </div>
+            <div class="flex items-center justify-between bg-cream border-[2.5px] border-ink rounded-2xl p-3">
+              <div class="text-center">
+                <div class="text-xs text-ink/75">仙台 SDJ</div>
+                <div class="text-2xl mt-0.5">17:25</div>
+                <div class="mt-1 inline-block bg-washi border-[1.5px] border-ink rounded-full px-2 py-0.5 text-[11px]">國際線 2F 報到</div>
+              </div>
+              <div class="flex flex-col items-center px-1">
+                <span class="text-xs bg-yamabuki border-2 border-ink rounded-full px-2.5 py-0.5 mb-0.5">JX863</span>
+                <span class="text-[10px] text-ink/80 mb-0.5">A330-900neo</span>
+                <svg width="56" height="22" viewBox="0 0 56 22" class="anim-train" aria-hidden="true">
+                  <line x1="2" y1="11" x2="54" y2="11" stroke="#3E3A39" stroke-width="2.5" stroke-dasharray="4 3"/>
+                  <path d="M22 11 L34 11 L28 4 L25 4 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M18 11 L38 11 L35 15 L20 15 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-[11px] text-ink/75 mt-0.5">飛行 4h 10m</span>
+              </div>
+              <div class="text-center">
+                <div class="text-xs text-ink/75">桃園 TPE</div>
+                <div class="text-2xl mt-0.5">20:35</div>
+                <div class="mt-1 inline-block bg-washi border-[1.5px] border-ink rounded-full px-2 py-0.5 text-[11px]">第一航廈 T1</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 點擊展開回程細節按鈕 -->
+          <div class="mt-3">
+            <button type="button" id="btn-flight-in" onclick="toggleFlightDetail('flight-in-detail', 'btn-flight-in', '回程商務艙報到＆託運細節')"
+              aria-expanded="false"
+              class="ehon-btn w-full bg-coral/35 hover:bg-coral/55 py-2 px-3 text-xs flex items-center justify-between">
+              <span>🔍 點開查看：回程商務艙報到＆託運細節</span>
+              <span class="text-[11px] bg-washi border-[1.5px] border-ink rounded-full px-2 py-0.5">展開 ▼</span>
+            </button>
+            <ul id="flight-in-detail" class="hidden mt-2.5 space-y-1.5 text-xs text-ink/90 bg-coral/20 border-2 border-ink rounded-xl p-2.5 animate-bounce-panel">
+              <li>👑 <strong>商務艙優先報到：</strong>15:00 抵達仙台機場 2 樓國際線櫃檯，走商務艙專屬通道快速託運 4 件大行李＋推車（免排長隊超省力）！</li>
+              <li>🛋️ <strong>A330-900neo 舒適返台：</strong>回程飛行 4h 10m，全平躺座椅讓大人與 1y8m 寶寶都能好好補眠休息。</li>
+              <li>📦 <strong>伴手禮託運：</strong>仙台機場國際線無專屬貴賓室，託完行李後可直接去 3 樓餐廳街用餐與 2 樓國內線伴手禮店最後採買！</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <!-- 星宇商務艙親子與行李專屬攻略（預設收合，點擊展開） -->
+      <div class="ehon-card-sm p-3.5 bg-cream">
+        <button type="button" id="btn-flight-baby" onclick="toggleFlightDetail('flight-baby-detail', 'btn-flight-baby', '👶 星宇商務艙親子＆推車行李託運攻略')"
+          aria-expanded="false"
+          class="ehon-btn w-full bg-yamabuki hover:bg-yamabuki/85 py-2.5 px-3.5 text-xs sm:text-sm flex items-center justify-between">
+          <span>🔍 點開查看：👶 星宇商務艙親子＆推車行李託運攻略</span>
+          <span class="text-[11px] bg-washi border-[1.5px] border-ink rounded-full px-2.5 py-0.5 shrink-0">展開 ▼</span>
+        </button>
+
+        <div id="flight-baby-detail" class="hidden mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm animate-bounce-panel">
+          <div class="bg-washi border-2 border-ink rounded-xl p-2.5">
+            <strong>🧳 商務艙超大行李額度：</strong>商務艙成人每位享 <strong>32kg × 2 件（共 64kg/人）</strong>＋ 不佔位嬰兒 10kg 託運，4 大 1 小買再多伴手禮都完全不怕超重，且享 Priority 優先行李條！
+          </div>
+          <div class="bg-washi border-2 border-ink rounded-xl p-2.5">
+            <strong>🛒 推車機邊託運（Door-to-Door）：</strong>報到時向商務艙櫃檯申請「推車推到登機門」，優先登機時推到空橋口交給地勤，下機於空橋口優先取回。
+          </div>
+          <div class="bg-washi border-2 border-ink rounded-xl p-2.5">
+            <strong>🍼 安全帶與起降規範：</strong>A330-900neo 商務艙配備三點式安全帶，起飛、降落與遇到亂流時，1y8m 嬰兒需繫上「嬰兒專用安全帶」由大人抱坐於懷中（不可使用睡籃）。
+          </div>
+          <div class="bg-washi border-2 border-ink rounded-xl p-2.5">
+            <strong>👂 起降護耳與隨身副食品：</strong>寶寶所需的溫開水、牛奶、米餅與果泥不受 100ml 限制；起降前 15 分鐘讓寶寶喝水或吃米餅吞嚥，預防耳鳴超有效！
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 每日行程（上方日期切換膠囊 ＋ 下方時間軸） -->
+    <section id="sec-itinerary" class="space-y-4">
+      <div class="flex items-center justify-between px-1">
+        <span class="ehon-pill bg-coral px-3 py-1 text-base">📅 每日親子行程表</span>
+        <span class="text-xs text-ink/75">點選日期切換 👇</span>
+      </div>
+
+      <!-- 日期切換橫向按鈕列 -->
+      <div id="day-tabs" class="flex gap-2 overflow-x-auto no-scrollbar pb-1.5 pt-0.5" role="tablist" aria-label="選擇旅遊天數">
+        <!-- 由 JS 動態產生 Day 1 ~ Day 6 按鈕 -->
+      </div>
+
+      <!-- 單日行程主卡片（切換日期時觸發彈跳動畫） -->
+      <div id="day-panel" class="ehon-card p-4 sm:p-6 bg-washi">
+        <!-- 由 JS 動態渲染該日插圖、標題與時間軸 -->
+      </div>
+    </section>
+
+    <!-- 3.5 新增：行程注意事項＆親子雪地貼心提醒 -->
+    <section id="sec-tips" class="space-y-3">
+      <div class="flex flex-wrap items-center justify-between gap-2 px-1">
+        <span class="ehon-pill bg-yamabuki px-3 py-1 text-base">💡 行程注意事項＆親子雪地提醒</span>
+        <span class="text-xs text-ink/75">出發前全家人一起看過一遍！</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <!-- 提醒 1：洋蔥式穿搭與溫差 -->
+        <article class="ehon-card p-4 bg-washi">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-8 h-8 rounded-full bg-coral border-2 border-ink flex items-center justify-center text-base">🧣</span>
+            <h3 class="text-base sm:text-lg">室內外溫差 25°C「洋蔥式穿法」</h3>
+          </div>
+          <ul class="text-xs sm:text-sm text-ink/85 space-y-1.5 leading-relaxed list-disc pl-4">
+            <li>東北 12 月室外約 <strong>-5°C ～ 5°C</strong>，但新幹線、百貨、星野飯店與包車內暖氣高達 <strong>22°C ～ 25°C</strong>！</li>
+            <li><strong>千萬別穿太厚毛衣在最裡面：</strong>建議「薄長袖/發熱衣 ＋ 好穿脫刷毛背心/中層 ＋ 防風防水厚羽絨外套」。</li>
+            <li>寶寶進室內務必立刻脫掉外層厚外套與毛帽，避免流汗後吹風感冒或熱起紅疹。</li>
+          </ul>
+        </article>
+
+        <!-- 提醒 2：推車與雪地行走安全 -->
+        <article class="ehon-card p-4 bg-washi">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-8 h-8 rounded-full bg-mizu border-2 border-ink flex items-center justify-center text-base">🛒</span>
+            <h3 class="text-base sm:text-lg">推車防風罩＆雪地防滑攻略</h3>
+          </div>
+          <ul class="text-xs sm:text-sm text-ink/85 space-y-1.5 leading-relaxed list-disc pl-4">
+            <li><strong>仙台＆松島：</strong>市區人行道與松島瑞巖寺平緩好推車，加裝「防風雨罩」就能幫寶寶擋寒風。</li>
+            <li><strong>奧入瀨＆青森：</strong>積雪結冰路面不適合推推車，建議準備<strong>「省力腰凳/背巾」</strong>搭配使用。</li>
+            <li><strong>防滑重點：</strong>走在新雪上不滑，最滑的是「車站出口、斑馬線、被踩平的黑冰」，大人抱小孩務必穿深溝防水雪靴並小步慢行。</li>
+          </ul>
+        </article>
+
+        <!-- 提醒 3：行李分流與新幹線大型行李 -->
+        <article class="ehon-card p-4 bg-washi">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-8 h-8 rounded-full bg-wakatake border-2 border-ink flex items-center justify-center text-base">🚄</span>
+            <h3 class="text-base sm:text-lg">行李分流＆新幹線乘車注意</h3>
+          </div>
+          <ul class="text-xs sm:text-sm text-ink/85 space-y-1.5 leading-relaxed list-disc pl-4">
+            <li><strong>Day 2 寄放行李秘訣：</strong>退房後先走去仙台站東口「東大都會大飯店」寄放 2–3 個 28 吋大箱（告知櫃檯 12/11 入住），只帶 1 箱去奧入瀨！</li>
+            <li><strong>東北新幹線「はやぶさ」：</strong>全車皆為指定席（無自由席），28 吋行李箱可放車廂前後大型行李區，推車收折後可放座位前方或最後一排空間。</li>
+          </ul>
+        </article>
+
+        <!-- 提醒 4：預約確認與餐廳/退稅提醒 -->
+        <article class="ehon-card p-4 bg-washi">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-8 h-8 rounded-full bg-yamabuki border-2 border-ink flex items-center justify-center text-base">🍖</span>
+            <h3 class="text-base sm:text-lg">重要預約＆伴手禮海關規範</h3>
+          </div>
+          <ul class="text-xs sm:text-sm text-ink/85 space-y-1.5 leading-relaxed list-disc pl-4">
+            <li><strong>星野八戶站接駁車：</strong>12/09 14:00 班次務必於出發前在官網完成預約；八戶站「西口」1 樓巴士站牌集合。</li>
+            <li><strong>海關禁帶提醒：</strong>日本新鮮水果（新鮮青森蘋果、仙台朝市草莓）與<strong>含肉類製品（牛舌調理包、牛肉乾、肉鬆）嚴禁帶回台灣</strong>！蘋果與草莓請在日本吃光光，伴手禮請挑蘋果派、蘋果汁、萩之月與毛豆餅乾。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. 住宿飯店資訊 -->
+    <section id="sec-hotel" class="space-y-3">
+      <div class="flex items-center gap-2 px-1">
+        <span class="ehon-pill bg-wakatake px-3 py-1 text-base">🏨 住宿飯店資訊</span>
+      </div>
+
+      <div class="space-y-3.5">
+        <!-- 住宿 1 -->
+        <article class="ehon-card p-4 bg-washi">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="ehon-pill bg-mizu px-3 py-0.5 text-xs">Day 1｜12/08（二）1 晚</span>
+            <span class="text-xs bg-cream border-2 border-ink rounded-full px-2.5 py-0.5">步行至仙台站 4 分鐘</span>
+          </div>
+          <h3 class="text-lg">仙台大和 Roynet 飯店（西口 PREMIER）</h3>
+          <p class="text-sm text-ink/85 mt-1 leading-relaxed">
+            Daiwa Roynet Hotel Sendai-nishiguchi PREMIER。首晚入住交通便利，距離晚餐「善治郎牛舌 南町通店」僅步行 2 分鐘，推車移動超輕鬆。
+          </p>
+        </article>
+
+        <!-- 住宿 2 -->
+        <article class="ehon-card p-4 bg-washi">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="ehon-pill bg-coral px-3 py-0.5 text-xs">Day 2–3｜12/09（三）～ 12/10（四）2 晚</span>
+            <span class="text-xs bg-yamabuki border-2 border-ink rounded-full px-2.5 py-0.5">八戶站西口免費接駁</span>
+          </div>
+          <h3 class="text-lg">星野集團 奧入瀨溪流飯店</h3>
+          <p class="text-sm text-ink/85 mt-1 leading-relaxed">
+            Hoshino Resorts Oirase Keiryu Hotel。冬季雪景秘境度假村！含「青森蘋果廚房」早晚餐 Buffet、西館巨型暖爐休息區、免費夜間冰瀑點燈巴士，以及 Day 4 早上已預約「溪流露台早餐」。
+          </p>
+        </article>
+
+        <!-- 住宿 3 -->
+        <article class="ehon-card p-4 bg-washi">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="ehon-pill bg-wakatake px-3 py-0.5 text-xs">Day 4–5｜12/11（五）～ 12/12（六）2 晚</span>
+            <span class="text-xs bg-cream border-2 border-ink rounded-full px-2.5 py-0.5">仙台站東口直接連通</span>
+          </div>
+          <h3 class="text-lg">仙台東大都會大飯店（仙台站共構）</h3>
+          <p class="text-sm text-ink/85 mt-1 leading-relaxed">
+            Hotel Metropolitan Sendai East。與仙台站共構免吹風淋雪！Day 2 早上可先寄放 2–3 個大行李箱於此；Day 6 退房寄放行李後也能輕鬆逛 S-PAL 採買伴手禮。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. 可打勾的清單區（待辦事項 / 出發前清單 / 親子行李清單） -->
+    <section id="sec-checklist" class="space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2 px-1">
+        <span class="ehon-pill bg-yamabuki px-3 py-1 text-base">🎒 親子旅遊勾勾看清單</span>
+        <button type="button" onclick="openResetModal()" class="text-xs underline text-ink/75 hover:text-ink px-2 py-1">
+          重設全部勾選
+        </button>
+      </div>
+
+      <!-- 進度條小卡 -->
+      <div class="ehon-card-sm p-3.5 bg-cream">
+        <div class="flex items-center justify-between text-sm mb-1.5">
+          <span>✨ 準備完成度（自動儲存於本機）</span>
+          <span id="progress-text">0 / 0</span>
+        </div>
+        <div class="w-full h-4 bg-washi border-[2.5px] border-ink rounded-full overflow-hidden">
+          <div id="progress-bar" class="h-full bg-wakatake transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- 清單分類切換鈕 -->
+      <div class="grid grid-cols-3 gap-2">
+        <button type="button" id="chk-tab-todo" onclick="switchChecklistTab('todo')"
+          class="ehon-btn py-2.5 px-2 text-xs sm:text-sm bg-coral text-ink text-center">
+          📌 行程待辦
+        </button>
+        <button type="button" id="chk-tab-pre" onclick="switchChecklistTab('pre')"
+          class="ehon-btn py-2.5 px-2 text-xs sm:text-sm bg-washi text-ink text-center">
+          📋 出發前清單
+        </button>
+        <button type="button" id="chk-tab-pack" onclick="switchChecklistTab('pack')"
+          class="ehon-btn py-2.5 px-2 text-xs sm:text-sm bg-washi text-ink text-center">
+          🧳 行李清單
+        </button>
+      </div>
+
+      <!-- 清單內容卡片 -->
+      <div id="checklist-container" class="ehon-card p-4 sm:p-5 bg-washi space-y-3">
+        <!-- 由 JS 渲染對應分類的可勾選項目與新增項目功能 -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="max-w-2xl mx-auto px-4 mt-10 text-center text-xs text-ink/75 space-y-1">
+    <p>❄️ 日本東北追雪・親子美食 6 日遊 🍎</p>
+    <p>祝全家人與 1 歲 8 個月小寶貝旅途平安、開心玩雪吃美食！</p>
+  </footer>
+
+  <!-- 自訂確認重設彈窗（絕不使用 alert/confirm） -->
+  <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/45 px-4">
+    <div class="ehon-card bg-washi p-5 max-w-sm w-full text-center space-y-4">
+      <div class="text-3xl">🧸</div>
+      <h4 class="text-lg">要清除所有打勾紀錄嗎？</h4>
+      <p class="text-sm text-ink/80">這會將「行程待辦、出發前清單、行李清單」恢復成未勾選狀態喔！</p>
+      <div class="flex gap-3 justify-center pt-1">
+        <button type="button" onclick="closeResetModal()" class="ehon-btn bg-washi px-4 py-2 text-sm">先不要</button>
+        <button type="button" onclick="confirmResetAll()" class="ehon-btn bg-coral px-4 py-2 text-sm">確定重設</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =====================================================================
+       1. 行程資料結構（完整對應 6 日行程、彩色交通標籤、必去標記與特色插圖）
+       ===================================================================== */
+    const itineraryData = [
+      {
+        day: 1,
+        dateLabel: 'Day 1',
+        dateShort: '12/08 (二)',
+        title: '抵達仙台・初嚐牛舌',
+        subtitle: '歡迎來到杜之都仙台！暖胃牛舌與藥妝保暖採買',
+        badgeColor: 'bg-mizu',
+        illustration: 'sendai_gyutan',
+        events: [
+          {
+            time: '16:00',
+            title: '抵達仙台機場 ➔ 搭機場線進市區',
+            transport: { label: '🚃 仙台機場線', color: 'bg-mizu' },
+            desc: '商務艙享優先下機與優先提領 4 個行李箱及推車，快速入境後搭乘仙台機場 Access 線前往仙台市區（約 17:30 抵達）。',
+            tip: '出關後走連通橋直達機場站，全線設有電梯；16:15 天黑降溫快，上車前先把保暖外套拿出來！'
+          },
+          {
+            time: '17:30',
+            title: '仙台大和 Roynet 飯店（西口 PREMIER）辦理入住',
+            transport: { label: '🚶 步行 4 分鐘', color: 'bg-wakatake' },
+            desc: '從仙台站推車步行約 4 分鐘抵達飯店，先放好大行李、幫寶寶整理保暖衣物。',
+            tip: '從仙台站 2 樓行人天橋搭乘電梯下到 1 樓路面，推推車與拉 4 個行李箱完全免搬樓梯。'
+          },
+          {
+            time: '18:30',
+            title: '晚餐：善治郎牛舌 南町通店',
+            mustGo: true,
+            transport: { label: '🚶 步行 2 分鐘', color: 'bg-wakatake' },
+            desc: '離飯店超近！除了炭烤厚切牛舌定食，還有濃郁牛舌咖哩等適合 1 歲 8 個月小孩分享的餐點。',
+            tip: '炭火烤爐較熱，帶寶寶建議請店員安排一般桌位（避開吧台），可點白飯、牛尾湯泡飯或熟食給寶寶吃。'
+          },
+          {
+            time: '20:00',
+            title: '散步至青葉通一番街逛藥妝、採買雪地保暖用品',
+            transport: { label: '🚶 散步推車', color: 'bg-wakatake' },
+            desc: '視大家與寶寶體力輕鬆逛街，補齊暖暖包、防滑鞋套或寶寶保濕乳液。',
+            tip: '拱廊商店街有遮雨棚且路面平坦；記得以明日上奧入瀨要用的「貼式暖暖包、鞋底防滑墊」為優先。',
+            choiceGroup: 'd1_night',
+            choices: [
+              {
+                id: 'stroll',
+                label: '🛍️ 散步去青葉通一番街採買',
+                badge: '體力充沛方案',
+                detail: '從善治郎步行約 5 分鐘即可進入有頂棚的「青葉通一番街／Clis Road」商店街，推車不怕風吹，去松本清或大國藥妝買齊貼式暖暖包、鞋底防滑墊與寶寶高保濕乳液。',
+                babyNote: '商店街營業至約 21:00，買完可順路去便利商店買明天新幹線上的鮮奶與小麵包。'
+              },
+              {
+                id: 'rest',
+                label: '🛌 直接回飯店泡澡休息',
+                badge: '寶寶優先方案',
+                detail: '第一天搭機＋入境較花體力，吃完牛舌直接走 2 分鐘回大和 Roynet 飯店休息，保暖小物改在飯店樓下超商或明天仙台站內購買即可！',
+                babyNote: '早點幫 1y8m 寶寶洗熱水澡睡覺，適應日本時差（快台灣 1 小時），為明天上奧入瀨養足精神。'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        day: 2,
+        dateLabel: 'Day 2',
+        dateShort: '12/09 (三)',
+        title: '新幹線北上・入住奧入瀨',
+        subtitle: '寄放大行李輕裝出發！搭綠色はやぶさ前進雪白溪流秘境',
+        badgeColor: 'bg-wakatake',
+        illustration: 'shinkansen',
+        events: [
+          {
+            time: '09:00',
+            title: '退房並寄放 2–3 個大行李箱至「仙台東大都會大飯店」',
+            transport: { label: '🧳 輕裝攻略', color: 'bg-yamabuki' },
+            desc: '將大件行李寄放於後天要入住的仙台站共構飯店，全家人只帶 1 箱＋推車輕鬆上山！',
+            tip: '寄放時出示 12/11 的訂房確認信；隨身媽媽包記得備齊今日車上要用的尿布、濕紙巾與寶寶零食。'
+          },
+          {
+            time: '10:00',
+            title: '搭乘東北新幹線「はやぶさ（Hayabusa）」前往八戶',
+            mustGo: true,
+            transport: { label: '🚄 東北新幹線', color: 'bg-wakatake' },
+            desc: '車程約 1 小時 10 分，全車指定席舒適平穩，記得將大型行李預約或放置於車廂行李區。',
+            tip: 'はやぶさ號「全車皆為指定席」，請預留 15 分鐘進站搭電梯上新幹線月台，還能在月台和綠色車頭合照！'
+          },
+          {
+            time: '11:30',
+            title: '午餐：八戶站內用餐（駅前ダイニング 櫟 或海鮮定食）',
+            transport: { label: '🍽️ 站內餐廳', color: 'bg-cream' },
+            desc: '推薦站內「駅前ダイニング 櫟」或新鮮海鮮定食，空間寬敞友善，推車停放無壓力。',
+            tip: '八戶站與烏托邦大樓連通，室內有暖氣與哺乳尿布台，用完餐可在伴手禮區逛逛等 14:00 接駁車。',
+            choiceGroup: 'd2_lunch',
+            choices: [
+              {
+                id: 'ichii',
+                label: '🍛 駅前ダイニング 櫟（Ichii）',
+                badge: '推車最寬敞',
+                detail: '位於八戶站檢票口外同層樓，走道與座位區非常寬敞，提供津輕漢堡排、八戶仙貝汁定食、烏龍麵與兒童餐，熟食選擇最多！',
+                babyNote: '有兒童椅與兒童餐具，漢堡排與烏龍麵軟嫩好咬，非常適合 1y8m 寶寶一起吃。'
+              },
+              {
+                id: 'seafood',
+                label: '🐟 八戶站內海鮮定食／いかめしや烹鱗',
+                badge: '在地海味',
+                detail: '品嚐八戶港著名的烤鯖魚定食、花枝飯（いかめし）與海鮮丼，出餐速度快，留更多時間逛車站土產店。',
+                babyNote: '可點烤鯖魚定食配白飯與味噌湯，魚肉挑刺後拌飯寶寶超愛吃！'
+              }
+            ]
+          },
+          {
+            time: '14:00',
+            title: '搭乘星野免費接駁巴士前往奧入瀨',
+            transport: { label: '🚌 免費接駁巴士', color: 'bg-mizu' },
+            desc: '於八戶站「西口」上車（務必提前 3 日於星野官網完成預約），沿途欣賞漸漸變白的雪景。',
+            tip: '請於 13:45 前抵達八戶站「西口 1 樓巴士站牌」報到，車程約 1 小時 40 分，上車前先帶寶寶換好尿布！'
+          },
+          {
+            time: '15:40',
+            title: '抵達星野集團 奧入瀨溪流飯店 ➔ 泡溫泉享受設施',
+            mustGo: true,
+            transport: { label: '♨️ 溪流露天風呂', color: 'bg-coral' },
+            desc: '辦理入住後換上館內服，輪流享受絕美冰瀑景觀溫泉，讓寶寶在溫暖大廳探索。',
+            tip: '大浴場外備有冰棒與休息區，大人可分兩批輪流去泡「冰瀑之湯」，房間也可向櫃檯借寶寶澡盆與尿布桶。'
+          },
+          {
+            time: '18:00',
+            title: '晚餐：飯店「青森蘋果廚房」Buffet',
+            mustGo: true,
+            transport: { label: '🍎 館內步行', color: 'bg-wakatake' },
+            desc: '品嚐各式青森蘋果創意料理、現榨蘋果汁與現烤蘋果派，親子友善選擇超豐富！',
+            tip: '餐廳免費提供兒童餐椅、兒童餐具與寶寶副食品，現烤熱蘋果派配霜淇淋是必吃招牌！'
+          }
+        ]
+      },
+      {
+        day: 3,
+        dateLabel: 'Day 3',
+        dateShort: '12/10 (四)',
+        title: '奧入瀨雪景・十和田湖導覽',
+        subtitle: '慢活賞雪不趕路！巨型暖爐、雪見巴士與夜間冰瀑點燈',
+        badgeColor: 'bg-mizu',
+        illustration: 'oirase_snow',
+        events: [
+          {
+            time: '08:00',
+            title: '早餐：飯店「青森蘋果廚房」Buffet',
+            transport: { label: '🍎 館內步行', color: 'bg-wakatake' },
+            desc: '早晨享用現做蘋果派與熱騰騰日式西式早餐，為雪地賞景儲備滿滿能量。',
+            tip: '可帶寶寶專用保溫悶燒罐或水果盒，喝杯溫牛奶與現榨青森蘋果汁開啟美好一天。'
+          },
+          {
+            time: '09:30',
+            title: '上午慢活：西館大廳欣賞巨型暖爐與窗外雪景',
+            mustGo: true,
+            transport: { label: '🔥 館內休憩', color: 'bg-cream' },
+            desc: '在岡本太郎設計的巨型暖爐「河神」旁喝杯熱飲，隔著大片落地窗輕鬆帶寶寶看雪。',
+            tip: '上午白雪光線最柔和，可帶寶寶到飯店外中庭踩踩雪、堆小雪人 15 分鐘，拍完全家福馬上回室內吹暖氣。'
+          },
+          {
+            time: '11:45',
+            title: '午餐：飯店西館「溪流-BASE」輕食簡單吃',
+            transport: { label: '🥪 館內輕食', color: 'bg-cream' },
+            desc: '不趕行程，在溪流-BASE 享用輕食午餐，留充足時間讓寶寶上廁所與穿戴保暖裝備。',
+            tip: '13:00 就要集合搭導覽巴士，中午簡單吃點輕食熱湯最剛好，記得幫寶寶穿好防風褲與毛帽。'
+          },
+          {
+            time: '13:00',
+            title: '已預約活動：奧入瀨溪流＆十和田湖巴士導覽（13:00–15:00）',
+            mustGo: true,
+            transport: { label: '🚌 預約導覽巴士', color: 'bg-mizu' },
+            desc: '搭乘溫暖舒適的導覽巴士直擊冰柱奇景與冬日十和田湖，免在雪地長途跋涉超適合親子！',
+            tip: '飯店免費出借雪靴與防寒大衣！中途下車拍照點結冰易滑，建議用背巾抱著寶寶上下巴士最安全。'
+          },
+          {
+            time: '15:15',
+            title: '回飯店休息、寶寶午睡、泡溫泉',
+            transport: { label: '♨️ 放鬆時光', color: 'bg-coral' },
+            desc: '下午回房間讓 1y8m 寶寶安心午睡，大人輪流泡湯放鬆。',
+            tip: '雪地活動後容易口渴皮膚乾，回房記得多喝溫水並幫寶寶擦保濕乳液。'
+          },
+          {
+            time: '18:00',
+            title: '晚餐：飯店 Buffet 晚餐',
+            transport: { label: '🍽️ 館內步行', color: 'bg-wakatake' },
+            desc: '享用豐盛自助晚餐，為晚上的點燈活動暖身。'
+          },
+          {
+            time: '20:00',
+            title: '視體力參加飯店免費「夜間冰瀑點燈巴士」',
+            transport: { label: '🚌 飯店免費巴士', color: 'bg-mizu' },
+            desc: '夜晚打上燈光的冰瀑夢幻震撼（車程短，視寶寶作息與精神彈性參加）。',
+            tip: '若寶寶已經想睡，也可以由 1 位大人留房陪伴，其他大人代表去拍絕美藍光冰瀑！',
+            choiceGroup: 'd3_night_bus',
+            choices: [
+              {
+                id: 'all_go',
+                label: '🚌 全家一起搭冰瀑點燈巴士',
+                badge: '夢幻藍冰奇景',
+                detail: '冬季限定免費活動！搭乘專用巴士前往馬門岩與千筋之瀑，燈光照射在巨大冰柱上呈現神秘冰藍色，全程多在溫暖車內與定點短暫下車拍照。',
+                babyNote: '夜間氣溫約 -5°C，下車拍張照即可抱寶寶先回巴士吹暖氣。'
+              },
+              {
+                id: 'split_go',
+                label: '👨‍👩‍👧 大人分批去・寶寶留房睡覺',
+                badge: '作息最安穩',
+                detail: '20:00 接近寶寶就寢時間，可由 1 位大人在房間陪寶寶哄睡，另外 3 位大人參加點燈巴士並拍回滿滿美照分享！',
+                babyNote: '不用穿脫厚重雪衣出門吹冷風，維持寶寶穩定睡眠品質。'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        day: 4,
+        dateLabel: 'Day 4',
+        dateShort: '12/11 (五)',
+        title: '溪流露台早餐・青森包車巡禮',
+        subtitle: '包車輕鬆玩青森市區！蘋果水手舍、睡魔燈籠與伴手禮',
+        badgeColor: 'bg-coral',
+        illustration: 'aomori_apple',
+        events: [
+          {
+            time: '09:00',
+            title: '已預約：溪流露台早餐（Mountain Stream Terrace）',
+            mustGo: true,
+            transport: { label: '✨ 限定早餐', color: 'bg-yamabuki' },
+            desc: '在銀白溪流美景相伴下享用精緻露台早餐，拍下全家人最美的雪國紀念照！',
+            tip: '拍照超夢幻！務必幫寶寶與長輩穿戴好保暖配件（毛帽、圍脖、暖暖包）再入座。'
+          },
+          {
+            time: '11:00',
+            title: '退房 ➔ 專屬包車出發前往青森市區',
+            transport: { label: '🚐 專屬包車（約 1h15m）', color: 'bg-yamabuki' },
+            desc: '行李與推車全上包車免搬運，寶寶在車上補眠，直達青森市區。',
+            tip: '冬季八甲田山區道路偶有風雪管制，包車司機熟悉路況最安心；上車後正好讓寶寶睡早覺。'
+          },
+          {
+            time: '12:30',
+            title: '午餐（青森二選一）：古川市場「自選海鮮丼」或「おさない食堂」',
+            mustGo: true,
+            transport: { label: '🚐 包車接送', color: 'bg-yamabuki' },
+            desc: '想體驗拿餐券自己夾海鮮選「古川市場」；想坐下來吃熱騰騰干貝味噌燒定食選站前「おさない食堂」。',
+            tip: '⚠️ 古川市場每週二公休（週五正常營業），但市場走道較窄且以生食為主；帶 1y8m 寶寶若想吃熱食熟干貝，「おさない食堂」會更舒適！',
+            choiceGroup: 'd4_lunch',
+            choices: [
+              {
+                id: 'osanai',
+                label: '🍲 おさない食堂（干貝味噌燒）',
+                badge: '👶 親子熱食首選',
+                detail: '青森站前人氣名店！招牌「陸奧灣干貝味噌燒定食（ほたて貝焼きみそ）」以柴魚高湯、雞蛋與鮮甜大干貝燉煮，熱呼呼又下飯，也有炸干貝與生魚片定食。',
+                babyNote: '有熟透的滑蛋干貝、白飯與熱湯，座位比傳統市場舒適，冬天帶 1y8m 寶寶吃熱食最安心！'
+              },
+              {
+                id: 'furukawa',
+                label: '🐟 古川市場「自選海鮮丼 Nokke-don」',
+                badge: '趣味體驗首選',
+                detail: '先買餐券換一碗溫熱白飯，拿著碗在市場各攤位自由挑選甜蝦、干貝、鮪魚、鮭魚卵，拼出獨一無二的澎湃海鮮丼！',
+                babyNote: '市場內多為生冷海鮮且休息區座位較擠，建議用背巾抱寶寶，並去熟食攤換玉子燒、烤魚與味噌湯給寶寶吃。'
+              }
+            ]
+          },
+          {
+            time: '14:00',
+            title: '下午包車景點：① 廣田神社 ➔ ② 睡魔之家 WA・RASSE ➔ ③ A-FACTORY',
+            mustGo: true,
+            transport: { label: '🚐 專屬包車', color: 'bg-yamabuki' },
+            desc: '① 廣田神社拍超萌「蘋果水手舍」祈求病厄除；② 睡魔之家全室內吹暖氣看巨型燈籠；③ A-FACTORY 掃貨蘋果派與蘋果汁。',
+            tip: '睡魔之家與 A-FACTORY 就在隔壁，全室內無障礙坡道超好推車！睡魔之家內部較暗且有太鼓聲，進場時可先抱抱安撫寶寶。'
+          },
+          {
+            time: '16:50',
+            title: '包車送達「新青森站」➔ 搭 17:40 新幹線返回仙台',
+            transport: { label: '🚄 東北新幹線 はやぶさ', color: 'bg-wakatake' },
+            desc: '約 19:30 抵達仙台站，順暢返回仙台市區。',
+            tip: '新青森站 1 樓「旬味館」非常好逛，上車前可買青森蘋果切塊或新幹線便當在車上吃。'
+          },
+          {
+            time: '19:40',
+            title: '入住：仙台東大都會大飯店（車站東口連通）',
+            transport: { label: '🚶 車站直結', color: 'bg-wakatake' },
+            desc: '領回 Day 2 寄放的大行李箱，電梯直達飯店超省力！',
+            tip: '從新幹線中央改札口出來往「東口」方向走，室內直通飯店大廳，完全不用吹到室外的冷風！'
+          },
+          {
+            time: '20:15',
+            title: '晚餐：仙台站 3 樓「牛舌通 / 壽司通」或 S-PAL 餐廳街',
+            transport: { label: '🚶 站內移動', color: 'bg-wakatake' },
+            desc: '不用走出車站吹冷風，直接在樓下美食街挑選全家人想吃的料理。',
+            tip: '若牛舌通排隊人潮較多，S-PAL 東館/本館餐廳街座位更寬敞，也有適合幼童的烏龍麵與定食。',
+            choiceGroup: 'd4_dinner',
+            choices: [
+              {
+                id: 'gyutan_street',
+                label: '👅 仙台站 3F 牛舌通／壽司通',
+                badge: '名店一字排開',
+                detail: '匯集伊達牛舌、喜助、利久、善治郎與毛豆茶寮，就在新幹線改札口旁，想一次攻略不同名店牛舌或站立壽司最方便。',
+                babyNote: '用餐尖峰時段較需排隊且座位略緊湊，建議派 1 人先去排隊，其他人推寶寶在 3F 逛伴手禮。'
+              },
+              {
+                id: 'spal_dining',
+                label: '🍲 S-PAL 仙台餐廳街（東館/本館）',
+                badge: '寬敞免久候',
+                detail: '與東大都會飯店直通！餐廳選擇多元（日式定食、拉麵、義大利麵、豬排、迴轉壽司），走道寬敞好推車。',
+                babyNote: '設有多間親子友善洗手間與獨立哺乳室，推車可直接推進大部分餐廳桌邊。'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        day: 5,
+        dateLabel: 'Day 5',
+        dateShort: '12/12 (六)',
+        title: '松島包車一日遊・仙台牛慶功宴',
+        subtitle: '免爬 202 階樓梯！暖氣觀光船遊日本三景＋頂級仙台牛燒肉',
+        badgeColor: 'bg-yamabuki',
+        illustration: 'matsushima_boat',
+        events: [
+          {
+            time: '08:00',
+            title: '早餐：散步至「仙台朝市」吃可樂餅、海鮮丼、新鮮水果',
+            transport: { label: '🚶 步行散步', color: 'bg-wakatake' },
+            desc: '感受仙台廚房朝氣！現炸馬鈴薯可樂餅與香甜草莓、蘋果超受大人小孩歡迎（週六有營業喔！）。',
+            tip: '必吃「齊藤熟食店」現炸可樂餅（請準備百圓零錢硬幣），買盒新鮮日本草莓晚上回飯店吃光光（新鮮水果不能帶回台灣喔）！'
+          },
+          {
+            time: '10:00',
+            title: '飯店大廳上包車 ➔ 上午：鹽竈神社（東參道平路直達）',
+            transport: { label: '🚐 專屬包車', color: 'bg-yamabuki' },
+            desc: '包車直達「東參道」完全免爬 202 階陡峭石階，平緩路面推車超友善！',
+            tip: '請司機停在「東參道停車場（第一駐車場）」，走進去就是平坦大道；神社境內部分碎石路若推車微顛簸可讓寶寶下來牽手走。'
+          },
+          {
+            time: '12:00',
+            title: '午餐：松島魚市場 2 樓食堂',
+            transport: { label: '🚐 包車接送', color: 'bg-yamabuki' },
+            desc: '品嚐冬季肥美現烤牡蠣、海鮮丼與熟食定食，滿足全家人口味。',
+            tip: '1 樓點餐買券、2 樓座位寬敞有電梯；大人吃烤牡蠣與生魚片，寶寶可吃熟魚定食、炸物或烤飯糰。'
+          },
+          {
+            time: '13:30',
+            title: '下午：① 松島觀光船（仁王丸號）➔ ② 五大堂＆觀瀾亭 ➔ ③ 國寶瑞巖寺',
+            mustGo: true,
+            transport: { label: '🛳️ 暖氣觀光船＋包車', color: 'bg-mizu' },
+            desc: '① 搭 50 分鐘仁王丸號遊日本三景（船艙有暖氣不怕冷）；② 散步五大堂、在觀瀾亭看海吃毛豆麻糬＋抹茶；③ 參觀參道平緩好走的國寶瑞巖寺。',
+            tip: '⚠️ 重要安全提醒：前往「五大堂」的紅橋（透橋）橋面木板間有約 15 公分鏤空大縫隙，推車不能上橋，過橋時務必把 1y8m 寶寶抱在懷裡！'
+          },
+          {
+            time: '17:30',
+            title: '包車返回仙台飯店稍作休息（約 18:00 抵達）',
+            transport: { label: '🚐 專屬包車', color: 'bg-yamabuki' },
+            desc: '回飯店放戰利品、讓寶寶換尿布小歇片刻，18:25 搭電梯下樓就能直達餐廳！'
+          },
+          {
+            time: '18:30',
+            title: '已預約晚餐：頂級仙台牛燒肉「仔虎 S-PAL 仙台店」（東館 3F）',
+            mustGo: true,
+            transport: { label: '🥩 18:30 已預約', color: 'bg-coral' },
+            desc: '已預約與「仙台東大都會大飯店」同棟共構的 S-PAL 東館 3 樓分店！搭電梯下樓走室內通道即達，完全免吹冷風，享用頂級 A5 仙台牛＆米澤牛慶功宴！',
+            mapUrl: 'https://maps.app.goo.gl/56Jr2fSeNTrqypMr8?g_st=ic',
+            mapLabel: '📍 開啟「仔虎 S-PAL 仙台店」Google 地圖',
+            tip: '18:00 回到飯店休息一下，18:25 直接從飯店搭電梯前往 S-PAL 東館 3F 報到即可！可點無調味薄切牛肉烤至全熟剪小塊、搭配白飯與蛋花湯給 1y8m 寶寶享用，並留意桌面烤爐溫度。'
+          },
+          {
+            time: '20:15',
+            title: '仙台站 S-PAL / 商店街最後採買',
+            transport: { label: '🚶 步行逛街', color: 'bg-wakatake' },
+            desc: '把握最後一晚補齊藥妝與零食伴手禮。',
+            tip: '今晚回房把所有「液體類（蘋果汁、酒、乳液、果凍）」全部收進大行李箱，明天退房後買的乾貨餅乾才能直接手提上機。'
+          }
+        ]
+      },
+      {
+        day: 6,
+        dateLabel: 'Day 6',
+        dateShort: '12/13 (日)',
+        title: '伴手禮採買・快樂返台',
+        subtitle: '車站共構最後衝刺掃貨！分乘兩台計程車輕鬆直達機場',
+        badgeColor: 'bg-wakatake',
+        illustration: 'sendai_airport',
+        events: [
+          {
+            time: '08:30',
+            title: '早餐：飯店享用 Buffet 或仙台站內咖啡廳',
+            transport: { label: '☕ 站內悠閒吃', color: 'bg-cream' },
+            desc: '貼心提醒：仙台朝市週日公休，今天在飯店或站內咖啡廳優雅吃早餐即可！',
+            tip: '仙台東大都會飯店的早餐有宮城在地食材與現做餐點，吃完再回房做最後行李打包。',
+            choiceGroup: 'd6_breakfast',
+            choices: [
+              {
+                id: 'hotel_buffet',
+                label: '🥐 飯店 Forest Kitchen 自助早餐',
+                badge: '下樓就能吃',
+                detail: '位於東大都會飯店 3 樓，挑高森林系空間超美！供應宮城縣產白米、東北鄉土小菜、現烤麵包、歐姆蛋與新鮮水果優格。',
+                babyNote: '有牛奶、玉米片、軟パン（軟麵包）、香蕉與溫粥，寶寶吃飽直接上樓退房超順暢。'
+              },
+              {
+                id: 'station_cafe',
+                label: '☕ 仙台站內咖啡廳厚片吐司早餐',
+                badge: '輕食省時方案',
+                detail: '睡晚一點也沒關係！直接去仙台站 2F/3F 的咖啡廳（如エビアン東口店、星巴克或牛舌通旁早餐店）吃熱三明治與手沖咖啡。',
+                babyNote: '可買吐司、水煮蛋與熱牛奶，省下時間直接無縫接軌 10:00 的 S-PAL 伴手禮大採買！'
+              }
+            ]
+          },
+          {
+            time: '10:00',
+            title: '退房寄放行李 ➔ 仙台站 2 樓＆S-PAL 採買伴手禮',
+            mustGo: true,
+            transport: { label: '🛍️ 站內掃貨', color: 'bg-coral' },
+            desc: '一站買齊必買名產：萩之月、現打毛豆泥奶昔（ずんだ茶寮）、真空牛舌調理包！',
+            tip: '⚠️ 再次提醒：含牛肉的「牛舌調理包、牛舌肉乾」不能帶回台灣喔！想帶回台灣分享請選「萩之月、毛豆麻糬/餅乾、牛舌風味洋芋片（不含肉成分）」。'
+          },
+          {
+            time: '14:00',
+            title: '提領行李，於仙台站東口分乘 2 台計程車直達仙台機場',
+            mustGo: true,
+            transport: { label: '🚕 2 台計程車直達', color: 'bg-yamabuki' },
+            desc: '車程約 35–40 分鐘，4 大 1 小＋4 件大行李＋推車分乘兩台車，完全免搬行李上下電車！',
+            tip: '飯店大廳電梯直達東口計程車排班處，分乘 2 台車（每台 2 大＋2 個 28 吋行李箱），單台車資約 ¥6,500～¥7,500，舒適度滿分！'
+          },
+          {
+            time: '15:00',
+            title: '抵達仙台機場報到 ➔ 機場 3 樓餐廳街用餐、逛免稅店',
+            transport: { label: '👑 商務艙優先報到', color: 'bg-yamabuki' },
+            desc: '走商務艙專屬櫃檯快速託運行李後，帶寶寶到 3 樓吃點心、看飛機起降，再到免稅店做最後採買。',
+            tip: '仙台機場國際線管制區內的免稅店較小，建議先在管制區外的 2 樓國內線伴手禮區與 3 樓餐廳街逛飽吃足，16:20 再過安檢！'
+          },
+          {
+            time: '17:25',
+            title: '搭乘星宇航空 JX863 商務艙返回台灣（20:35 抵達桃園）',
+            transport: { label: '👑 星宇商務艙 JX863', color: 'bg-yamabuki' },
+            desc: '享受全平躺商務艙舒適返台，帶著滿滿東北雪景回憶與戰利品平安回家囉！',
+            tip: '登機前別忘了幫寶寶換最後一次乾淨尿布、裝滿保溫杯溫水，準備在全平躺座椅上香甜入睡。'
+          }
+        ]
+      }
+    ];
+
+    /* =====================================================================
+       2. 每日特色繪本 SVG 插圖產生器（純平塗、3px 墨灰線框、輕微動畫）
+       ===================================================================== */
+    function getDayIllustrationSVG(type) {
+      switch (type) {
+        case 'sendai_gyutan':
+          // 仙台牛舌定食＋伊達政宗新月頭盔元素＋寶寶飯糰
+          return `
+            <svg viewBox="0 0 360 130" class="w-full h-28 sm:h-32 block" role="img" aria-label="仙台牛舌與伊達新月繪本插圖">
+              <!-- 背景裝飾圓 -->
+              <circle cx="65" cy="65" r="42" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+              <!-- 伊達政宗新月標誌 -->
+              <path d="M52 44 C38 56 44 82 68 86 C54 78 50 58 64 46 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" class="anim-sway"/>
+              <!-- 炭烤牛舌大盤子 -->
+              <g class="anim-float">
+                <ellipse cx="185" cy="84" rx="68" ry="26" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+                <ellipse cx="185" cy="81" rx="54" ry="18" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+                <!-- 厚切牛舌片 -->
+                <rect x="148" y="68" width="32" height="16" rx="8" transform="rotate(-10 148 68)" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+                <rect x="176" y="65" width="34" height="16" rx="8" transform="rotate(6 176 65)" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+                <rect x="164" y="77" width="32" height="15" rx="7.5" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+                <!-- 翠綠蔥花點綴 -->
+                <circle cx="165" cy="74" r="3" fill="#B9DAA5" stroke="#3E3A39" stroke-width="1.5"/>
+                <circle cx="192" cy="73" r="3" fill="#B9DAA5" stroke="#3E3A39" stroke-width="1.5"/>
+              </g>
+              <!-- 可愛白飯碗 -->
+              <g class="anim-sway">
+                <path d="M276 72 L322 72 L314 96 C312 101 286 101 284 96 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M278 72 Q299 54 320 72 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+              </g>
+            </svg>`;
+        case 'shinkansen':
+          // 綠色はやぶさ新幹線奔馳過雪山
+          return `
+            <svg viewBox="0 0 360 130" class="w-full h-28 sm:h-32 block" role="img" aria-label="東北新幹線はやぶさ插圖">
+              <polygon points="35,102 95,30 155,102" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <polygon points="95,30 76,53 95,48 114,53" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+              <polygon points="215,102 275,34 335,102" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <rect x="12" y="100" width="336" height="12" rx="6" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+              <!-- 新幹線車頭 -->
+              <g class="anim-train">
+                <path d="M72 99 L72 70 C72 64 77 60 84 60 L225 60 C248 60 276 76 289 89 C294 94 290 99 282 99 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M72 83 L278 83 C284 87 289 91 289 95 C289 98 286 99 280 99 L72 99 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+                <line x1="74" y1="83" x2="276" y2="83" stroke="#F2A497" stroke-width="5"/>
+                <rect x="92" y="66" width="18" height="10" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+                <rect x="120" y="66" width="18" height="10" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+                <rect x="148" y="66" width="18" height="10" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+                <rect x="176" y="66" width="18" height="10" rx="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+                <path d="M222 65 L240 65 L252 75 L222 75 Z" fill="#3E3A39"/>
+              </g>
+            </svg>`;
+        case 'oirase_snow':
+          // 奧入瀨冰瀑與雪見溫泉水豚/雪人
+          return `
+            <svg viewBox="0 0 360 130" class="w-full h-28 sm:h-32 block" role="img" aria-label="奧入瀨雪景與冰瀑插圖">
+              <!-- 雪花點點 -->
+              <g class="anim-snow" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2">
+                <circle cx="48" cy="28" r="4"/>
+                <circle cx="152" cy="22" r="4.5"/>
+                <circle cx="298" cy="26" r="4"/>
+              </g>
+              <!-- 冰瀑岩石與冰柱 -->
+              <path d="M40 105 L56 32 L134 32 L148 105 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <!-- 垂墜冰柱 -->
+              <polygon points="62,32 70,76 78,32" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+              <polygon points="84,32 94,88 104,32" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+              <polygon points="108,32 116,72 124,32" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+              <!-- 暖呼呼露天溫泉池與雪人 -->
+              <g class="anim-float">
+                <ellipse cx="252" cy="92" rx="66" ry="20" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+                <ellipse cx="252" cy="90" rx="54" ry="13" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+                <!-- 泡湯小雪人頭 -->
+                <circle cx="252" cy="74" r="14" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+                <!-- 頭頂折疊小毛巾 -->
+                <rect x="243" y="56" width="18" height="7" rx="3" fill="#F6D27A" stroke="#3E3A39" stroke-width="2"/>
+                <circle cx="247" cy="73" r="2" fill="#3E3A39"/>
+                <circle cx="257" cy="73" r="2" fill="#3E3A39"/>
+                <!-- 溫泉熱氣 -->
+                <path d="M214 66 Q210 56 216 48" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M290 66 Q294 56 288 48" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+              </g>
+            </svg>`;
+        case 'aomori_apple':
+          // 青森大蘋果＋睡魔燈籠金魚
+          return `
+            <svg viewBox="0 0 360 130" class="w-full h-28 sm:h-32 block" role="img" aria-label="青森蘋果與金魚睡魔燈籠插圖">
+              <!-- 青森紅蘋果 -->
+              <g class="anim-float">
+                <path d="M108 42 C82 38 66 58 70 84 C74 106 94 114 110 108 C126 114 146 106 150 84 C154 58 138 38 108 42 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M110 43 Q110 26 118 20" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+                <path d="M112 32 Q132 22 138 34 Q125 42 112 32 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+                <circle cx="98" cy="74" r="3" fill="#3E3A39"/>
+                <circle cx="122" cy="74" r="3" fill="#3E3A39"/>
+                <path d="M105 83 Q110 89 115 83" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+              </g>
+              <!-- 青森可愛金魚睡魔燈籠 -->
+              <g class="anim-sway">
+                <line x1="250" y1="12" x2="250" y2="34" stroke="#3E3A39" stroke-width="3"/>
+                <ellipse cx="250" cy="68" rx="42" ry="32" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+                <!-- 燈籠條紋 -->
+                <path d="M225 41 Q218 68 225 95" fill="none" stroke="#F2A497" stroke-width="4"/>
+                <path d="M275 41 Q282 68 275 95" fill="none" stroke="#F2A497" stroke-width="4"/>
+                <!-- 金魚大尾巴 -->
+                <polygon points="290,68 318,48 312,68 318,88" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+                <!-- 圓圓大眼睛 -->
+                <circle cx="232" cy="64" r="7" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+                <circle cx="230" cy="64" r="3" fill="#3E3A39"/>
+              </g>
+            </svg>`;
+        case 'matsushima_boat':
+          // 松島仁王丸號觀光船＋松樹小島＋毛豆麻糬
+          return `
+            <svg viewBox="0 0 360 130" class="w-full h-28 sm:h-32 block" role="img" aria-label="松島觀光船與松樹小島插圖">
+              <!-- 松島松樹島 -->
+              <path d="M242 94 Q285 60 330 94 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <g class="anim-sway">
+                <rect x="283" y="54" width="6" height="18" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+                <polygon points="286,24 268,46 304,46" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+                <polygon points="286,38 264,60 308,60" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+              </g>
+              <!-- 松島觀光船（仁王丸號） -->
+              <g class="anim-float">
+                <rect x="78" y="48" width="92" height="22" rx="6" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+                <rect x="92" y="54" width="14" height="8" rx="2" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+                <rect x="114" y="54" width="14" height="8" rx="2" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+                <rect x="136" y="54" width="14" height="8" rx="2" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2"/>
+                <!-- 船身 -->
+                <path d="M54 70 L196 70 L180 94 L70 94 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              </g>
+              <!-- 海浪 -->
+              <rect x="14" y="92" width="332" height="24" rx="12" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+              <path d="M45 104 Q62 98 78 104 T112 104" fill="none" stroke="#FFFCF6" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M215 104 Q232 98 248 104 T282 104" fill="none" stroke="#FFFCF6" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>`;
+        case 'sendai_airport':
+        default:
+          // 伴手禮禮盒＋毛豆奶昔＋起飛小飛機
+          return `
+            <svg viewBox="0 0 360 130" class="w-full h-28 sm:h-32 block" role="img" aria-label="仙台伴手禮與星宇返台飛機插圖">
+              <!-- 毛豆泥奶昔杯 -->
+              <g class="anim-sway">
+                <polygon points="68,54 108,54 102,106 74,106" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M66 54 Q88 36 110 54 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+                <line x1="94" y1="26" x2="88" y2="50" stroke="#F2A497" stroke-width="4" stroke-linecap="round"/>
+              </g>
+              <!-- 萩之月伴手禮盒 -->
+              <g class="anim-float">
+                <rect x="138" y="56" width="76" height="50" rx="10" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+                <rect x="170" y="56" width="12" height="50" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+                <path d="M176 56 C162 40 152 52 176 56 C200 52 190 40 176 56 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+              </g>
+              <!-- 快樂起飛飛機 -->
+              <g class="anim-train">
+                <path d="M244 58 L314 40 C322 38 328 43 324 49 L298 64 L250 70 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+                <polygon points="274,52 292,34 298,48" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+              </g>
+            </svg>`;
+      }
+    }
+
+    /* =====================================================================
+       3. 渲染日期切換按鈕與單日時間軸（支援二選一互動按鈕與記憶狀態）
+       ===================================================================== */
+    let currentDay = 1;
+    const CHOICE_STORAGE_KEY = 'tohoku_2026_family_choices_v1';
+    let userChoices = loadUserChoices();
+
+    function loadUserChoices() {
+      try {
+        const saved = localStorage.getItem(CHOICE_STORAGE_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch (e) {}
+      // 預設選取第一個推薦選項
+      return {
+        d1_night: 'stroll',
+        d2_lunch: 'ichii',
+        d3_night_bus: 'all_go',
+        d4_lunch: 'osanai',
+        d4_dinner: 'spal_dining',
+        d6_breakfast: 'hotel_buffet'
+      };
+    }
+
+    function selectEventChoice(groupKey, choiceId) {
+      userChoices[groupKey] = choiceId;
+      try {
+        localStorage.setItem(CHOICE_STORAGE_KEY, JSON.stringify(userChoices));
+      } catch (e) {}
+      renderDayPanel(false);
+    }
+
+    /* 航班詳細資訊展開／收合切換 */
+    function toggleFlightDetail(detailId, btnId, titleText) {
+      const detailEl = document.getElementById(detailId);
+      const btnEl = document.getElementById(btnId);
+      if (!detailEl || !btnEl) return;
+
+      const isHidden = detailEl.classList.contains('hidden');
+      if (isHidden) {
+        detailEl.classList.remove('hidden');
+        btnEl.setAttribute('aria-expanded', 'true');
+        btnEl.innerHTML = `
+          <span>✨ ${titleText}</span>
+          <span class="text-[11px] bg-washi border-[1.5px] border-ink rounded-full px-2.5 py-0.5 shrink-0">收合 ▲</span>
+        `;
+      } else {
+        detailEl.classList.add('hidden');
+        btnEl.setAttribute('aria-expanded', 'false');
+        btnEl.innerHTML = `
+          <span>🔍 點開查看：${titleText}</span>
+          <span class="text-[11px] bg-washi border-[1.5px] border-ink rounded-full px-2.5 py-0.5 shrink-0">展開 ▼</span>
+        `;
+      }
+    }
+
+    function renderDayTabs() {
+      const tabsContainer = document.getElementById('day-tabs');
+      tabsContainer.innerHTML = itineraryData.map(item => {
+        const isActive = item.day === currentDay;
+        const activeClasses = isActive
+          ? `${item.badgeColor} -translate-y-0.5`
+          : 'bg-washi hover:bg-cream';
+        return `
+          <button type="button"
+            role="tab"
+            aria-selected="${isActive}"
+            onclick="selectDay(${item.day})"
+            class="ehon-btn px-3.5 py-2 shrink-0 text-left flex flex-col items-center min-w-[84px] ${activeClasses}">
+            <span class="text-sm leading-tight">${item.dateLabel}</span>
+            <span class="text-[11px] text-ink/85 mt-0.5">${item.dateShort}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectDay(dayNum) {
+      currentDay = dayNum;
+      renderDayTabs();
+      renderDayPanel(true);
+    }
+
+    function renderDayPanel(withBounce = false) {
+      const data = itineraryData.find(d => d.day === currentDay);
+      const panel = document.getElementById('day-panel');
+
+      // 重新觸發彈跳動畫
+      panel.classList.remove('animate-bounce-panel');
+      void panel.offsetWidth; // 強制重繪以重啟 CSS 動畫
+      if (withBounce) {
+        panel.classList.add('animate-bounce-panel');
+      }
+
+      const eventsHTML = data.events.map((ev, idx) => {
+        const isLast = idx === data.events.length - 1;
+
+        // 若該行程節點有二選一／多選一選項，產生繪本風互動按鈕與詳細卡片
+        let interactiveChoicesHTML = '';
+        if (ev.choices && ev.choices.length > 0) {
+          const selectedId = userChoices[ev.choiceGroup] || ev.choices[0].id;
+          const activeChoice = ev.choices.find(c => c.id === selectedId) || ev.choices[0];
+
+          const buttonsHTML = ev.choices.map(c => {
+            const isSelected = c.id === activeChoice.id;
+            const btnStyle = isSelected
+              ? 'bg-coral text-ink -translate-y-0.5'
+              : 'bg-washi text-ink/80 hover:bg-cream';
+            return `
+              <button type="button"
+                onclick="selectEventChoice('${ev.choiceGroup}', '${c.id}')"
+                aria-pressed="${isSelected}"
+                class="ehon-btn px-3 py-2 text-xs sm:text-sm text-left flex items-center justify-between gap-2 ${btnStyle}">
+                <span class="leading-snug">${isSelected ? '👉 ' : ''}${c.label}</span>
+                <span class="shrink-0 text-[10px] sm:text-xs bg-washi border-[1.5px] border-ink rounded-full px-2 py-0.5">${isSelected ? '✓ 已選' : '點我切換'}</span>
+              </button>
+            `;
+          }).join('');
+
+          interactiveChoicesHTML = `
+            <div class="mt-3 pt-2.5 border-t-2 border-dashed border-ink/30">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs bg-mizu border-2 border-ink rounded-full px-2.5 py-0.5">👆 點選按鈕切換方案（自動記憶）</span>
+                <span class="text-[11px] text-ink/75">${activeChoice.badge}</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2.5">
+                ${buttonsHTML}
+              </div>
+              <!-- 選中方案的詳細說明卡 -->
+              <div class="bg-washi border-[2.5px] border-ink rounded-2xl p-3 space-y-1.5 animate-bounce-panel">
+                <div class="flex flex-wrap items-center justify-between gap-1">
+                  <span class="text-xs sm:text-sm">🎯 <strong>目前選擇：</strong>${activeChoice.label}</span>
+                  <span class="text-[11px] bg-wakatake border-[1.5px] border-ink rounded-full px-2 py-0.5">${activeChoice.badge}</span>
+                </div>
+                <p class="text-xs text-ink/90 leading-relaxed">${activeChoice.detail}</p>
+                <p class="text-xs text-ink bg-coral/20 border-[1.5px] border-ink rounded-xl px-2.5 py-1.5 leading-relaxed">
+                  👶 <strong>1y8m 寶寶攻略：</strong>${activeChoice.babyNote}
+                </p>
+              </div>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="relative pl-7 ${isLast ? '' : 'pb-6'}">
+            <!-- 時間軸垂直連接線 -->
+            ${!isLast ? '<div class="absolute left-[9px] top-5 bottom-0 w-[3px] bg-ink"></div>' : ''}
+            <!-- 時間軸圓點 -->
+            <div class="absolute left-0 top-1.5 w-[21px] h-[21px] rounded-full ${ev.mustGo ? 'bg-coral' : 'bg-yamabuki'} border-[3px] border-ink"></div>
+
+            <!-- 單筆行程內容盒 -->
+            <div class="bg-cream/65 border-[2.5px] border-ink rounded-2xl p-3.5">
+              <div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+                <span class="bg-washi border-2 border-ink rounded-full px-2.5 py-0.5 text-xs">${ev.time}</span>
+                <span class="${ev.transport.color} border-2 border-ink rounded-full px-2.5 py-0.5 text-xs">${ev.transport.label}</span>
+                ${ev.mustGo ? '<span class="bg-coral border-2 border-ink rounded-full px-2.5 py-0.5 text-xs">⭐ 必去</span>' : ''}
+                ${ev.choices ? '<span class="bg-mizu border-2 border-ink rounded-full px-2.5 py-0.5 text-xs">🔀 二選一互動</span>' : ''}
+              </div>
+              <h4 class="text-base sm:text-lg leading-snug">${ev.title}</h4>
+              <p class="text-xs sm:text-sm text-ink/85 mt-1 leading-relaxed">${ev.desc}</p>
+              ${ev.mapUrl ? `
+                <div class="mt-2.5">
+                  <a href="${ev.mapUrl}" target="_blank" rel="noopener noreferrer"
+                    class="ehon-btn inline-flex items-center gap-1.5 bg-wakatake hover:bg-wakatake/85 px-3 py-1.5 text-xs text-ink">
+                    <span>🗺️</span>
+                    <span>${ev.mapLabel || '開啟 Google 地圖'}</span>
+                    <span class="text-[10px]">↗</span>
+                  </a>
+                </div>
+              ` : ''}
+              ${interactiveChoicesHTML}
+              ${ev.tip ? `
+                <div class="mt-2.5 bg-yamabuki/35 border-2 border-ink rounded-xl px-3 py-2 text-xs text-ink flex items-start gap-2">
+                  <span class="shrink-0 text-sm">💡</span>
+                  <span class="leading-relaxed">${ev.tip}</span>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      panel.innerHTML = `
+        <!-- 該日標頭與專屬插圖 -->
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <span class="ehon-pill ${data.badgeColor} px-3 py-0.5 text-xs sm:text-sm">${data.dateLabel}｜${data.dateShort}</span>
+          <span class="text-xs text-ink/75">共 ${data.events.length} 個行程節點</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl mb-1">${data.title}</h3>
+        <p class="text-xs sm:text-sm text-ink/80 mb-3">${data.subtitle}</p>
+
+        <!-- 每日專屬繪本小插圖框 -->
+        <div class="bg-mizu/25 border-[2.5px] border-ink rounded-2xl p-2 mb-5">
+          ${getDayIllustrationSVG(data.illustration)}
+        </div>
+
+        <!-- 時間軸列表 -->
+        <div class="mt-2">
+          ${eventsHTML}
+        </div>
+      `;
+    }
+
+    /* =====================================================================
+       4. 出發倒數計時器（目標時間：2026-12-08T11:50:00+08:00）
+       ===================================================================== */
+    const targetDeparture = new Date('2026-12-08T11:50:00+08:00').getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = targetDeparture - now;
+
+      const titleEl = document.getElementById('countdown-title');
+      if (diff <= 0) {
+        titleEl.textContent = '🎉 已經出發追雪去囉！祝旅途愉快！';
+        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-hours').textContent = '0';
+        document.getElementById('cd-mins').textContent = '0';
+        document.getElementById('cd-secs').textContent = '0';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('cd-days').textContent = String(days);
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
+
+    /* =====================================================================
+       5. 可打勾清單（行程待辦 / 出發前清單 / 親子行李清單）＋ localStorage
+       ===================================================================== */
+    const STORAGE_KEY = 'tohoku_2026_family_checklist_v3';
+
+    const defaultChecklists = {
+      todo: [
+        { id: 'td-0', text: '起飛前 21 天～24 小時上星宇官網「預選商務艙主餐」＋確認寶寶餐（BBML/CHML）', checked: false },
+        { id: 'td-1', text: '預約星野奧入瀨免費接駁巴士（12/09 14:00 八戶站西口上車，需提前 3 日官網預約）', checked: false },
+        { id: 'td-2', text: '確認已預約活動憑證：Day 3 奧入瀨＆十和田湖巴士導覽（13:00–15:00）', checked: true },
+        { id: 'td-3', text: '確認已預約活動憑證：Day 4 溪流露台早餐（09:00）', checked: true },
+        { id: 'td-4', text: '預訂東北新幹線「はやぶさ」指定席＋大型行李放置區（去程 12/09、回程 12/11）', checked: false },
+        { id: 'td-5', text: '已預約 Day 5（12/12 18:30）晚餐「仔虎 S-PAL 仙台店（東館 3F）」（4 大 1 小）', checked: true },
+        { id: 'td-6', text: '確認 Day 4 青森包車＆Day 5 松島包車司機聯絡方式與兒童安全座椅', checked: false }
+      ],
+      pre: [
+        { id: 'pr-1', text: '檢查 4 大 1 小護照效期（需超過 6 個月以上）', checked: false },
+        { id: 'pr-2', text: '填寫日本 Visit Japan Web（入境審查＋海關申報 QR Code）', checked: false },
+        { id: 'pr-3', text: '投保全家海外旅遊平安險＋不便險（含兒童醫療保障）', checked: false },
+        { id: 'pr-4', text: '開通日本漫遊 / 準備 eSIM 或 Wi-Fi 分享器', checked: false },
+        { id: 'pr-5', text: '兌換日幣現金（古川市場餐券、仙台朝市、神社參拜與計程車備用）＋綁定西瓜卡 Suica', checked: false },
+        { id: 'pr-6', text: '備齊 1 歲 8 個月寶寶常備藥（退燒、腸胃、止咳鼻水、耳溫槍）', checked: false }
+      ],
+      pack: [
+        { id: 'pk-1', text: '【行李箱配置】4 個 28 吋內行李箱（規劃好其中 1 箱專門裝 Day 2–3 奧入瀨兩天一夜用品）', checked: false },
+        { id: 'pk-2', text: '【推車裝備】輕便折疊嬰兒推車＋防風防雪透明雨罩＋推車掛勾', checked: false },
+        { id: 'pk-3', text: '【雪地保暖】大人＆寶寶防水防風羽絨外套、發熱衣、刷毛褲', checked: false },
+        { id: 'pk-4', text: '【配件防滑】防滑防水雪靴（或冰爪鞋套）、毛帽、防水手套、圍脖', checked: false },
+        { id: 'pk-5', text: '【寶寶用品】尿布（估算 6 天份＋備用）、濕紙巾、保溫瓶、悶燒罐、寶寶餐具與圍兜', checked: false },
+        { id: 'pk-6', text: '【乾燥保濕】高滋潤度寶寶乳液、護唇膏、暖暖包（貼式＋手握式）', checked: false }
+      ]
+    };
+
+    let checklists = loadChecklists();
+    let activeChecklistTab = 'todo';
+
+    function loadChecklists() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          return JSON.parse(saved);
+        }
+      } catch (e) {
+        // 若瀏覽器隱私模式阻擋 localStorage 則使用預設值
+      }
+      return JSON.parse(JSON.stringify(defaultChecklists));
+    }
+
+    function saveChecklists() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(checklists));
+      } catch (e) {
+        // 忽略儲存錯誤
+      }
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const allItems = [
+        ...checklists.todo,
+        ...checklists.pre,
+        ...checklists.pack
+      ];
+      const total = allItems.length;
+      const done = allItems.filter(i => i.checked).length;
+      const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+
+      document.getElementById('progress-text').textContent = `${done} / ${total} 項 (${pct}%)`;
+      document.getElementById('progress-bar').style.width = `${pct}%`;
+    }
+
+    function switchChecklistTab(tabKey) {
+      activeChecklistTab = tabKey;
+      const tabs = {
+        todo: { el: document.getElementById('chk-tab-todo'), color: 'bg-coral' },
+        pre: { el: document.getElementById('chk-tab-pre'), color: 'bg-mizu' },
+        pack: { el: document.getElementById('chk-tab-pack'), color: 'bg-wakatake' }
+      };
+
+      Object.keys(tabs).forEach(key => {
+        const btn = tabs[key].el;
+        btn.classList.remove('bg-coral', 'bg-mizu', 'bg-wakatake', 'bg-washi');
+        if (key === tabKey) {
+          btn.classList.add(tabs[key].color);
+        } else {
+          btn.classList.add('bg-washi');
+        }
+      });
+
+      renderChecklist();
+    }
+
+    function renderChecklist() {
+      const container = document.getElementById('checklist-container');
+      const items = checklists[activeChecklistTab] || [];
+
+      const itemsHTML = items.map(item => `
+        <label class="flex items-start gap-3 p-3 rounded-2xl border-[2.5px] border-ink cursor-pointer transition-colors ${item.checked ? 'bg-wakatake/40' : 'bg-cream/60 hover:bg-cream'}">
+          <input type="checkbox"
+            ${item.checked ? 'checked' : ''}
+            onchange="toggleCheckItem('${activeChecklistTab}', '${item.id}')"
+            class="mt-0.5 w-6 h-6 shrink-0 accent-[#3E3A39] rounded cursor-pointer" />
+          <span class="text-sm sm:text-base leading-snug select-none ${item.checked ? 'line-through text-ink/60' : 'text-ink'}">
+            ${escapeHTML(item.text)}
+          </span>
+        </label>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="space-y-2.5">
+          ${itemsHTML}
+        </div>
+        <!-- 新增自訂清單項目列 -->
+        <form onsubmit="addCustomItem(event)" class="pt-3 border-t-[2.5px] border-dashed border-ink/40 flex gap-2">
+          <input type="text" id="new-item-input" placeholder="新增自訂項目（例如：寶寶小零食）..."
+            class="flex-1 bg-washi border-[2.5px] border-ink rounded-full px-3.5 py-2 text-sm focus:outline-none focus:bg-yamabuki/25" />
+          <button type="submit" class="ehon-btn bg-yamabuki px-4 py-2 text-sm shrink-0">＋ 新增</button>
+        </form>
+      `;
+
+      updateProgress();
+    }
+
+    function toggleCheckItem(category, id) {
+      const item = checklists[category].find(i => i.id === id);
+      if (item) {
+        item.checked = !item.checked;
+        saveChecklists();
+        renderChecklist();
+      }
+    }
+
+    function addCustomItem(e) {
+      e.preventDefault();
+      const input = document.getElementById('new-item-input');
+      const val = input.value.trim();
+      if (!val) return;
+
+      checklists[activeChecklistTab].push({
+        id: 'custom-' + Date.now(),
+        text: val,
+        checked: false
+      });
+      input.value = '';
+      saveChecklists();
+      renderChecklist();
+    }
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[m]));
+    }
+
+    /* 重設彈窗控制 */
+    function openResetModal() {
+      const modal = document.getElementById('reset-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeResetModal() {
+      const modal = document.getElementById('reset-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function confirmResetAll() {
+      checklists = JSON.parse(JSON.stringify(defaultChecklists));
+      saveChecklists();
+      renderChecklist();
+      closeResetModal();
+    }
+
+    /* =====================================================================
+       6. 減少動態效果設定（偵測系統 prefers-reduced-motion ＋ 手動按鈕）
+       ===================================================================== */
+    let isMotionReduced = false;
+
+    function initMotionPreference() {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      isMotionReduced = mediaQuery.matches;
+      applyMotionState();
+
+      mediaQuery.addEventListener('change', (e) => {
+        isMotionReduced = e.matches;
+        applyMotionState();
+      });
+    }
+
+    function toggleMotion() {
+      isMotionReduced = !isMotionReduced;
+      applyMotionState();
+    }
+
+    function applyMotionState() {
+      const body = document.body;
+      const icon = document.getElementById('motion-icon');
+      const label = document.getElementById('motion-label');
+
+      if (isMotionReduced) {
+        body.classList.add('reduce-motion');
+        icon.textContent = '⏸️';
+        label.textContent = '動態關';
+      } else {
+        body.classList.remove('reduce-motion');
+        icon.textContent = '✨';
+        label.textContent = '動態開';
+      }
+    }
+
+    /* =====================================================================
+       7. 初始化啟動
+       ===================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      initMotionPreference();
+      renderDayTabs();
+      renderDayPanel(false);
+      renderChecklist();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    });
+  </script>
+</body>
+</html>
